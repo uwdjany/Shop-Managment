@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = new mongoose.Schema({
     quantity:Number,
-    price:Number,
+    price:String,
     description:String,
     user:{
         type:mongoose.Schema.ObjectId,
