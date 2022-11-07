@@ -1,26 +1,14 @@
-import { Router } from "express";
-import purchaseController from "../controller/purchaseController";
-import ProductController from "../controller/productController";
-import SalesController from "../controller/salesController";
-import UserController from "../controller/userController";
+import express from "express";
+import productRoutes from "./productRoutes";
+import purchasesRoutes from "./purchasesRoutes";
+import salesRoutes from "./salesRoutes";
+import userRoutes from "./userRoutes";
 
-const route = Router();
+const app = express();
 
-//purchase routes
-route.post("/purchase/create", purchaseController.createPurchase);
-route.get("/get/allPurchase", purchaseController.getAllPurchase);
-route.get("/purchase/:id", purchaseController.getOneById);
+app.use("/product", productRoutes);
+app.use("/purchase" , purchasesRoutes);
+app.use("sales", salesRoutes);
+app.use("/user", userRoutes);
 
-//create user route
-route.post("/user/create", UserController.createUser);
-route.get("/user/:id", UserController.getOneById);
-route.delete("user/delete/:id", UserController.deleteUser);
-
-//product route
-
-route.post("/product/create", ProductController.createProduct);
-route.get("/get/all",ProductController.getAllProduct);
-
-
-
-export default route;
+export default app;

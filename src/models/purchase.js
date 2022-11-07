@@ -24,7 +24,8 @@ const Schema = new mongoose.Schema({
 Schema.pre(/^find/,function(next){
     this.populate({
         path:"user",
-        select:"-password"
+        select:"-password",
+        select:"-password -picture"
 
     })
     this.populate({path:"product"});
